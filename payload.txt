@@ -1,0 +1,166 @@
+REM Description: combination of different scripts located at https://github.com/hak5/usbrubberducky-payloads/tree/master/payloads/library/prank
+
+DELAY  2000
+GUI r
+DELAY 200
+STRING powershell -windowstyle hidden
+ENTER
+DELAY 200
+REM Set volume to max
+STRING $key=[Math]::Ceiling(100/2);$obj=New-Object -ComObject WScript.Shell;for($i=0;$i -lt $key;$i++){$obj.SendKeys([char] 175)}
+ENTER
+DELAY 500
+STRING $sp=New-Object -ComObject SAPI.SpVoice
+ENTER
+DELAY 500
+STRING $sp.Speak("Welcome to this demo")
+ENTER
+DELAY 3000
+STRING $sp.Speak("This is an example of what could happen if you plug in a random USB stick you found somewhere")
+ENTER
+DELAY 800
+STRING exit
+ENTER
+DELAY 200
+GUI
+DELAY 200
+STRING edge
+DELAY 400
+ENTER
+DELAY 2000
+STRING My location
+ENTER
+DELAY 3000
+GUI r
+DELAY 200
+STRING powershell -windowstyle hidden
+ENTER
+DELAY 200
+STRING $sp=New-Object -ComObject SAPI.SpVoice
+ENTER
+DELAY 500
+STRING $sp.Speak("I know where you are")
+ENTER
+DELAY 3000
+STRING $sp.Speak("I could encrypt all your files")
+ENTER
+DELAY 2500
+STRING exit
+ENTER
+GUI r
+DELAY 200
+STRING powershell
+ENTER
+STRING for ($i = 1;$i -le 100; $i++){
+SHIFT ENTER
+STRING Write-Progress -Activity "Encrypting files" -Status "$i% Complete:" -PercentComplete $i
+SHIFT ENTER
+STRING Start-Sleep -Milliseconds 5
+SHIFT ENTER
+STRING if ($i -eq 80){
+SHIFT ENTER
+STRING break}}
+ENTER
+DELAY 2000
+EXIT
+GUI r
+DELAY 200
+STRING powershell -windowstyle hidden
+ENTER
+DELAY 200
+STRING $sp=New-Object -ComObject SAPI.SpVoice
+ENTER
+DELAY 500
+STRING $sp.Speak("But I won't")
+ENTER
+DELAY 800
+STRING $sp.Speak("This might be just a demo but there are real cyber threats out there")
+ENTER
+DELAY 1500
+STRING $sp.Speak("Therefore be vigilant, for your sake and that of the foundations")
+ENTER
+DELAY 2500
+REM Backup Wallpaper
+STRING Copy-Item "$HOME\AppData\Roaming\Microsoft\Windows\Themes\TranscodedWallpaper" -Destination $home\pictures\wallpaper.HackDemo
+ENTER
+DELAY 250
+REM Create new wallpaper
+STRING Add-Type -AssemblyName System.Drawing
+ENTER
+STRING $filename = "$home\pictures\hackDemo.png"
+ENTER
+STRING $bmp = new-object System.Drawing.Bitmap 1080,720
+ENTER
+STRING $font = new-object System.Drawing.Font Consolas,10
+ENTER
+STRING $brushBg = [System.Drawing.Brushes]::Black
+ENTER
+STRING $brushFg = [System.Drawing.Brushes]::Green
+ENTER
+STRING $graphics = [System.Drawing.Graphics]::FromImage($bmp)
+ENTER
+STRING $graphics.FillRectangle($brushBg,0,0,$bmp.Width,$bmp.Height)
+ENTER
+STRING $graphics.DrawString('Thank you for paying attention to this demo
+ENTER
+ENTER
+STRING            <Space for ASCII ART>
+ENTER
+STRING          
+ENTER
+STRING     
+ENTER
+ENTER
+ENTER
+STRING Remember:
+ENTER
+STRING 1. You are a target for hackers, who might tailor their attacks to you
+ENTER
+STRING 2. Keep your software updated 
+ENTER
+STRING 3. Be wary of phishing
+ENTER
+STRING 4. Don't plug in random devices
+ENTER
+STRING 5. Lock your devices if you are not using them
+ENTER
+STRING 6. Be careful what you click',$font,$brushFg,10,10)
+ENTER
+STRING $graphics.Dispose()
+ENTER
+STRING $bmp.Save($filename)
+ENTER
+DELAY 500
+
+REM Set new wallpaper
+STRING $MyWallpaper= $filename
+ENTER
+STRING $code = @'
+ENTER
+STRING using System.Runtime.InteropServices;
+ENTER
+STRING namespace Win32{
+ENTER
+STRING      public class Wallpaper{
+ENTER
+STRING         [DllImport("user32.dll", CharSet=CharSet.Auto)]
+ENTER
+STRING          static extern int SystemParametersInfo (int uAction , int uParam , string lpvParam , int fuWinIni) ;
+ENTER
+STRING          public static void SetWallpaper(string thePath){
+ENTER
+STRING            SystemParametersInfo(20,0,thePath,3);
+ENTER
+STRING          }
+ENTER
+STRING     }
+ENTER
+STRING  } 
+ENTER
+STRING '@
+ENTER
+STRING add-type $code 
+ENTER
+STRING [Win32.Wallpaper]::SetWallpaper($MyWallpaper)
+ENTER
+DELAY 500
