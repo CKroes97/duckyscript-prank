@@ -1,0 +1,1 @@
+#Duckyscript demo script
