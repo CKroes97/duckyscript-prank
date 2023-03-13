@@ -164,3 +164,4 @@ ENTER
 STRING [Win32.Wallpaper]::SetWallpaper($MyWallpaper)
 ENTER
 DELAY 500
+ATTACKMODE STORAGE
