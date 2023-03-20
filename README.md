@@ -5,4 +5,4 @@ Combination of multiple Powershell-based script  from https://github.com/hak5/us
 Script has the following features:
 - Powershell-based
 - No downloads
-- Long runtime for extended runtimes
+- Long runtime for extended demos
